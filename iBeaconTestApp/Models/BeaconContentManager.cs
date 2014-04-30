@@ -2,6 +2,7 @@
 using MonoTouch.CoreLocation;
 using MonoTouch.Foundation;
 using System.Linq;
+using MonoTouch.UIKit;
 
 namespace iBeaconTestApp.Models
 {
@@ -15,6 +16,8 @@ namespace iBeaconTestApp.Models
 
 		private static DateTime _deliveredContentLastCleared = DateTime.Today;
 
+
+		//Dummy CMS
 		private static TestData _testData = new TestData();
 
 
@@ -29,6 +32,8 @@ namespace iBeaconTestApp.Models
 			*/
 
 			//RepeatDeliveredContenterAfterInMinutes = GetDelivedContentExpirationTime ();
+			//I set this to 1 munute as default. This should be loaded from a config/service
+			//Region enter/exit messages will be re-popped to users after this time expires.
 			RepeatDeliveredContenterAfterInMinutes = 1;
 
 		}
@@ -155,8 +160,23 @@ namespace iBeaconTestApp.Models
 			return (r != null) ? r as BeaconContent : null;
 		}
 
+		/// <summary>
+		/// This method is used to help reduce spamming of guests while the app is not Active (foreground)
+		/// It tracks which messsages have been shown and expires
+		/// them to be reshown based upon RepeatDeliveredContenterAfterInMinutes
+		/// If reduces Local notification spam
+		/// </summary>
+		/// <returns><c>true</c>, if show content was shoulded, <c>false</c> otherwise.</returns>
+		/// <param name="contentId">Content identifier.</param>
+
 		public bool ShouldShowContent(string contentId)
 		{
+			//Don't limit entry and exit content if the app is open and active
+			if (UIApplication.SharedApplication.ApplicationState == UIApplicationState.Active) {
+				return true;
+			}
+
+
 			NSObject value;
 
 			NSObject key = NSObject.FromObject (contentId);
@@ -165,26 +185,26 @@ namespace iBeaconTestApp.Models
 			//  Clear the _delivered content dictionary every 24 hours
 			//  We use to limit spamming along with RepeatDeliveredContenterAfterInMinutes
 			//	which will stop notifications from repeating in within the time specificied
-		
+	
 			if (DateTime.Today > DeliveredContentLastCleared) {
 				ClearDeliveredContent ();
 			}
 
-			if(_deliveredContent.TryGetValue(key, out value))
-			{
+
+			//NSDate use UTC
+			if (_deliveredContent.TryGetValue (key, out value)) {
 				if (DateTime.UtcNow > (NSDate)value) {
 					_deliveredContent.Remove (key);
 					_deliveredContent.Add (key, future);
 					return true;
 				}
-			}else{
+			} else {
 				_deliveredContent.Add (key, future);
 				return true;
 			}
 
 			return false;
 		}
-
 	}
 }
 
