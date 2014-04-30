@@ -18,7 +18,6 @@ namespace iBeaconTestApp
 
 		public iBeaconTestAppViewController (IntPtr handle) : base (handle)
 		{
-
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -78,6 +77,7 @@ namespace iBeaconTestApp
 		public override void ObserveValue (NSString keyPath, NSObject ofObject, NSDictionary change, IntPtr context)
 		{
 			BeaconContent beaconContent;
+
 			if (keyPath == CoreLocation.CoreLocationPropertyName.CustomContent.ToString()) {
 
 				beaconContent = (BeaconContent)change.ValueForKey (new NSString (Globals.NotificationConstants.New.ToString().ToLower()));
@@ -91,18 +91,6 @@ namespace iBeaconTestApp
 					if (beaconContent.ViewImage != string.Empty) {
 						//Load it
 						imgAdd.Image = UIImage.FromBundle(beaconContent.ViewImage);
-					}
-
-					if(beaconContent.ProximityUuid != null)
-					{
-						string labelTextStr = String.Format ("Beacon: {0}\nMajor: {1}\nMinor: {2}\nRSSI: {3}\nRegion: {4}\nProximity:{5} ", 
-							                     beaconContent.ProximityUuid,
-							                     beaconContent.Major,
-							                     beaconContent.Minor,
-							                     beaconContent.Rssi.ToString (),
-							                     beaconContent.Region.ToString (),
-							                     beaconContent.Proximity.ToString ());
-						//lblProxDesc.Text = labelTextStr;
 					}
 				});
 			}
