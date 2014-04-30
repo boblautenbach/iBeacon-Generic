@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBeaconTestApp", "iBeaconTestApp\iBeaconTestApp.csproj", "{57E6D885-CFBA-46F4-A3A6-9D5B26920267}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Debug|iPhone.Build.0 = Debug|iPhone
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Release|iPhone.ActiveCfg = Release|iPhone
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Release|iPhone.Build.0 = Release|iPhone
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{57E6D885-CFBA-46F4-A3A6-9D5B26920267}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = iBeaconTestApp\iBeaconTestApp.csproj
+	EndGlobalSection
+EndGlobal
