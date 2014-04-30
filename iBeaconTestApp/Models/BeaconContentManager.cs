@@ -29,7 +29,7 @@ namespace iBeaconTestApp.Models
 			*/
 
 			//RepeatDeliveredContenterAfterInMinutes = GetDelivedContentExpirationTime ();
-			RepeatDeliveredContenterAfterInMinutes = 3;
+			RepeatDeliveredContenterAfterInMinutes = 1;
 
 		}
 

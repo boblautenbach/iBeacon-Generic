@@ -62,10 +62,10 @@ namespace iBeaconTestApp.Models
 			if (beacons.Length > 0) {
 				CLBeacon selectedBeacon = (CLBeacon)beacons.GetValue (0);
 
-				if (selectedBeacon.Proximity == CLProximity.Near || selectedBeacon.Proximity == CLProximity.Immediate) 
-				{
-					SetContent (_beaconManager.GetBeaconContent (selectedBeacon, region));
-				}
+					if (selectedBeacon.Proximity == CLProximity.Near || selectedBeacon.Proximity == CLProximity.Immediate) 
+					{
+						SetContent (_beaconManager.GetBeaconContent (selectedBeacon, region));
+					} 
 			}
 		}
 

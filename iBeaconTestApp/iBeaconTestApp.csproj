@@ -93,7 +93,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\Images\ibeaconExit.png" />
     <BundleResource Include="Resources\Images\ibeaconAtBeacon.png" />
     <BundleResource Include="Resources\Images\ibeaconEnter.png" />

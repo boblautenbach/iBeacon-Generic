@@ -47,22 +47,22 @@ namespace iBeaconTestApp
 			var beaconId = new NSUuid(Globals.BroadCastUUid);
 			_beaconRegion = new CLBeaconRegion (beaconId, Globals.BeaconRegion);
 		
-			_beaconRegion.NotifyOnExit = true;
-			_beaconRegion.NotifyOnEntry = true;
 			_beaconRegion.NotifyEntryStateOnDisplay = true;
 		
 			_locationManager.Delegate = _locationDelegate;
 		
 			_locationManager.StartMonitoring(_beaconRegion);
-			RangeBeacons (true);
+
+			RangeBeacons (!(UIApplication.SharedApplication.ApplicationState == UIApplicationState.Background));
 		}
 
 		void RangeBeacons(bool shouldRange)
 		{
 			if (shouldRange)
 			{
+				imgAdd.Image = UIImage.FromBundle (Globals.DefaultImage);
+				lblAddtext.Text = Globals.DefaultText;
 				_locationManager.StartRangingBeacons (_beaconRegion);
-				imgAdd.Image = UIImage.FromBundle ("ibeaconHome");
 				_locationManager.RequestState(_beaconRegion);
 			}else{
 				_locationManager.StopRangingBeacons (_beaconRegion);
@@ -73,7 +73,6 @@ namespace iBeaconTestApp
 		{
 			NSNumber appStatus = (NSNumber)notification.UserInfo.ValueForKey((NSString)Globals.NotificationConstants.isInForeground.ToString());
 			RangeBeacons ((bool)appStatus);
-
 		}
 
 		public override void ObserveValue (NSString keyPath, NSObject ofObject, NSDictionary change, IntPtr context)

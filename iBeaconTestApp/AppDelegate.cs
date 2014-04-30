@@ -55,7 +55,6 @@ namespace iBeaconTestApp
 		public override void WillEnterForeground (UIApplication application)
 		{
 			NSNotificationCenter.DefaultCenter.PostNotificationName(Globals.NotificationConstants.AppStatus.ToString(),this, new NSDictionary (Globals.NotificationConstants.isInForeground.ToString(), true)); 
-
 		}
 
 		// This method is called when the application is about to terminate. Save data, if needed.

@@ -13,6 +13,8 @@ namespace iBeaconTestApp
 
 		public static string BroadCastUUid = "DFDFDFDF-9345-9348-5348-CE1238434123";
 		public static string BeaconRegion = "My Beacon";
+		public static string DefaultText = "Welcome! Let's find a Deal!";
+		public static string DefaultImage = "ibeaconHome";
 
 	}
 }
