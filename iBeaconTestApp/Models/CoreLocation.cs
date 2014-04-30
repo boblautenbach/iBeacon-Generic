@@ -62,17 +62,10 @@ namespace iBeaconTestApp.Models
 			if (beacons.Length > 0) {
 				CLBeacon selectedBeacon = (CLBeacon)beacons.GetValue (0);
 
-				if (_beacon == null) {
-					_beacon = selectedBeacon.Copy ();
-				}
-
-				var lastBeacon = (CLBeacon)_beacon;
-
-				if (selectedBeacon.Proximity == CLProximity.Near && (lastBeacon.Proximity == CLProximity.Far || lastBeacon.Proximity == CLProximity.Unknown)) {
+				if (selectedBeacon.Proximity == CLProximity.Near || selectedBeacon.Proximity == CLProximity.Immediate) 
+				{
 					SetContent (_beaconManager.GetBeaconContent (selectedBeacon, region));
 				}
-
-				_beacon = selectedBeacon.Copy ();
 			}
 		}
 

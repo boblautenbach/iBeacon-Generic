@@ -94,6 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Images\ibeaconExit.png" />
+    <BundleResource Include="Resources\Images\ibeaconAtBeacon.png" />
+    <BundleResource Include="Resources\Images\ibeaconEnter.png" />
+    <BundleResource Include="Resources\ibeaconHome.png" />
+    <BundleResource Include="Resources\Default-568h%402x_brane.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

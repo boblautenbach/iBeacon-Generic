@@ -55,7 +55,6 @@ namespace iBeaconTestApp
 		
 			_locationManager.StartMonitoring(_beaconRegion);
 			RangeBeacons (true);
-			_locationManager.RequestState(_beaconRegion);
 		}
 
 		void RangeBeacons(bool shouldRange)
@@ -63,6 +62,8 @@ namespace iBeaconTestApp
 			if (shouldRange)
 			{
 				_locationManager.StartRangingBeacons (_beaconRegion);
+				imgAdd.Image = UIImage.FromBundle ("ibeaconHome");
+				_locationManager.RequestState(_beaconRegion);
 			}else{
 				_locationManager.StopRangingBeacons (_beaconRegion);
 			}
@@ -85,11 +86,12 @@ namespace iBeaconTestApp
 				InvokeOnMainThread (delegate {  
 
 					if (beaconContent.ViewContent != string.Empty) {
-						lblProxState.Text = beaconContent.ViewContent;
+						lblAddtext.Text = beaconContent.ViewContent;
 					}
 
 					if (beaconContent.ViewImage != string.Empty) {
 						//Load it
+						imgAdd.Image = UIImage.FromBundle(beaconContent.ViewImage);
 					}
 
 					if(beaconContent.ProximityUuid != null)
@@ -101,7 +103,7 @@ namespace iBeaconTestApp
 							                     beaconContent.Rssi.ToString (),
 							                     beaconContent.Region.ToString (),
 							                     beaconContent.Proximity.ToString ());
-						lblProxDesc.Text = labelTextStr;
+						//lblProxDesc.Text = labelTextStr;
 					}
 				});
 			}

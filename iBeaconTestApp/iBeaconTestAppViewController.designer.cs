@@ -13,29 +13,21 @@ namespace iBeaconTestApp
 	partial class iBeaconTestAppViewController
 	{
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblProxDesc { get; set; }
+		MonoTouch.UIKit.UIImageView imgAdd { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblProximity { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UILabel lblProxState { get; set; }
+		MonoTouch.UIKit.UILabel lblAddtext { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (lblProximity != null) {
-				lblProximity.Dispose ();
-				lblProximity = null;
+			if (imgAdd != null) {
+				imgAdd.Dispose ();
+				imgAdd = null;
 			}
 
-			if (lblProxDesc != null) {
-				lblProxDesc.Dispose ();
-				lblProxDesc = null;
-			}
-
-			if (lblProxState != null) {
-				lblProxState.Dispose ();
-				lblProxState = null;
+			if (lblAddtext != null) {
+				lblAddtext.Dispose ();
+				lblAddtext = null;
 			}
 		}
 	}

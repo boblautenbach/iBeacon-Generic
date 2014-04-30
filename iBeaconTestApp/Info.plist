@@ -34,5 +34,9 @@
 	<array>
 		<string>bluetooth-central</string>
 	</array>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon-60@2x</string>
+	</array>
 </dict>
 </plist>

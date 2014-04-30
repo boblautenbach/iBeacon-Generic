@@ -12,23 +12,23 @@ namespace iBeaconTestApp.Models
 		{
 			regions = new BeaconContent[2] 
 			{
-				new BeaconContent() {ContentId = "1", ScheduledTime = new TimeSpan(0,0,0), Region = "My Beacon", NotificationTitle = "Bingo!",
-					NotificationMessage = "You Entered Try Bingo Region", ViewImage = "", ViewContent = "Entered Bingo Region", RegionEvent = MonoTouch.CoreLocation.CLRegionState.Inside},
+				new BeaconContent() {ContentId = "1", ScheduledTime = new TimeSpan(0,0,0), Region = "My Beacon", NotificationTitle = "Fashion Place!",
+					NotificationMessage = @"Stop in and see our 40%% off sale.", ViewImage = "Images/ibeaconEnter", ViewContent = "Welcome to Fashion Place!", RegionEvent = MonoTouch.CoreLocation.CLRegionState.Inside},
 
-				new BeaconContent() {ContentId = "2", ScheduledTime = new TimeSpan(0,0,0), Region = "My Beacon", NotificationTitle = "Exit Bingo!",
-					NotificationMessage = "You Exited Try Bingo Region", ViewImage = "", ViewContent = "Exit Bingo Region", RegionEvent =  MonoTouch.CoreLocation.CLRegionState.Outside}
+				new BeaconContent() {ContentId = "2", ScheduledTime = new TimeSpan(0,0,0), Region = "My Beacon", NotificationTitle = "Fashion Place!",
+					NotificationMessage = @"Come back soon!", ViewImage = "Images/ibeaconExit", ViewContent = "Fashion Place will miss you!", RegionEvent =  MonoTouch.CoreLocation.CLRegionState.Outside}
 
 			};
 
 
 			beacons = new BeaconContent[2] 
 			{
-				new BeaconContent() {ContentId = "3", ScheduledTime = new TimeSpan(0,0,0), Region = "My Beacon", NotificationTitle = "Near Wine!",
-					NotificationMessage = "Try Wine", ViewImage = "", ViewContent = "Near Wine Beacon",
+				new BeaconContent() {ContentId = "3", ScheduledTime = new TimeSpan(0,0,0), Region = "My Beacon", NotificationTitle = "Fashion Place",
+					NotificationMessage = @"Amazing Deal on Jackets.", ViewImage = "Images/ibeaconAtBeacon", ViewContent = "OMG!  Great Deal on Jacket!",
 					Major = "49147", Minor = "24250", ProximityUuid  = "DFDFDFDF-9345-9348-5348-CE1238434123"},
 
-				new BeaconContent() {ContentId = "4", ScheduledTime = new TimeSpan(0,0,0), Region = "My Beacon", NotificationTitle = "Near Beer!",
-					NotificationMessage = "Try Beer", ViewImage = "", ViewContent = "Near Beer Beacon", 
+				new BeaconContent() {ContentId = "4", ScheduledTime = new TimeSpan(0,0,0), Region = "My Beacon", NotificationTitle = "Fashion Outlet",
+					NotificationMessage = @"Another Amazing Deal.", ViewImage = "Images/ibeaconAtBeacon", ViewContent = "This will look great on you!", 
 					Major = "2004", Minor = "2008", ProximityUuid = "DFDFDFDF-9345-9348-5348-CE1238434123"},
 			};
 		}
