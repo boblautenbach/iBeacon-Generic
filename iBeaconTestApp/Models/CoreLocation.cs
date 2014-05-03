@@ -17,7 +17,7 @@ namespace iBeaconTestApp.Models
 	public class CoreLocation : CLLocationManagerDelegate
 	{
 		NSObject _beacon;
-
+		//int i;
 		public enum CoreLocationPropertyName
 		{
 			CustomContent,
@@ -75,6 +75,10 @@ namespace iBeaconTestApp.Models
 
 		public override void DidRangeBeacons (CLLocationManager manager, CLBeacon[] beacons, CLBeaconRegion region)
 		{
+			//I use this to watch how many ranges I get on region enter/exit when app is in
+			//background mode
+//			i += 1;
+//			Console.WriteLine ("ranging " + i);
 
 			if (beacons.Length > 0) {
 				CLBeacon selectedBeacon = (CLBeacon)beacons.GetValue (0);
@@ -82,7 +86,7 @@ namespace iBeaconTestApp.Models
 				//If the beacon is near or immediate show content.
 				//This should be enhanced to handle only setting and showing once vs over and over again
 				//Might also implement different content for each proximty type
-				if (selectedBeacon.Proximity == CLProximity.Near || selectedBeacon.Proximity == CLProximity.Immediate) 
+				if (selectedBeacon.Proximity == CLProximity.Near) 
 				{
 					SetContent (_beaconManager.GetBeaconContent (selectedBeacon, region));
 				} 

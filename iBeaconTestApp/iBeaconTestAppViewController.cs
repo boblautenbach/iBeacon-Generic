@@ -35,12 +35,6 @@ namespace iBeaconTestApp
 		{
 			base.ViewDidLoad ();
 
-
-			//Used to revieve willenterforeground/background notifications from app delegate
-			_notificationCenter = NSNotificationCenter.DefaultCenter.AddObserver (
-				(NSString)Globals.NotificationConstants.AppStatus.ToString(),
-				CheckApplicationStatus); 
-
 			//usig KVO to tracking content change updates for the view
 			_locationDelegate.AddObserver (this, (NSString)CoreLocation.CoreLocationPropertyName.CustomContent.ToString(), NSKeyValueObservingOptions.New, IntPtr.Zero);
 
@@ -55,40 +49,33 @@ namespace iBeaconTestApp
 		
 			_locationManager.StartMonitoring(_beaconRegion);
 
-			//Only rangebeacons if in the forground.
+	
 			//I have tested this and this viewdidload event fires momentarily IF :
 			//1) the app is shutdown
 			//2) you are actively monitoring regions
 			//3) you enter a region being monitorings
-			//I needed to ensure I don't start ranging if the app fires
-			//up from background to handle region events
-			RangeBeacons (!(UIApplication.SharedApplication.ApplicationState == UIApplicationState.Background));
+			//You will get about 10-11 beacon DidRangeEvnts when the app
+			//fires up form the background on region enter/exit.
+			//I removed notificationcenter updates since :
+			//1) if the user happens to enter a region with a beacon in near prox
+			//he/she will only get one notification since I am tracking how often I pop
+			//content withing BeaconContentManager.
+			RangeBeacons ();
 		}
 
 		/// <summary>
 		/// Handles Ranging on/off
 		/// </summary>
 		/// <param name="shouldRange">If set to <c>true</c> should range.</param>
-		void RangeBeacons(bool shouldRange)
+		void RangeBeacons()
 		{
-			if (shouldRange)
+			if (!(UIApplication.SharedApplication.ApplicationState == UIApplicationState.Background))
 			{
 				imgAdd.Image = UIImage.FromBundle (Globals.DefaultImage);
 				lblAddtext.Text = Globals.DefaultText;
-				_locationManager.StartRangingBeacons (_beaconRegion);
-				_locationManager.RequestState(_beaconRegion);
-			}else{
-				_locationManager.StopRangingBeacons (_beaconRegion);
 			}
-		}
-		/// <summary>
-		/// Delegate from NSNotification Center foreground/background evets
-		/// </summary>
-		/// <param name="notification">Notification.</param>
-		private void CheckApplicationStatus(NSNotification notification)
-		{
-			NSNumber appStatus = (NSNumber)notification.UserInfo.ValueForKey((NSString)Globals.NotificationConstants.isInForeground.ToString());
-			RangeBeacons ((bool)appStatus);
+			_locationManager.StartRangingBeacons (_beaconRegion);
+			_locationManager.RequestState(_beaconRegion);
 		}
 
 		/// <Docs>Key-path to use to perform the value lookup. The keypath consists of a series of lowercase ASCII-strings with no

@@ -34,6 +34,8 @@ namespace iBeaconTestApp.Models
 			//RepeatDeliveredContenterAfterInMinutes = GetDelivedContentExpirationTime ();
 			//I set this to 1 munute as default. This should be loaded from a config/service
 			//Region enter/exit messages will be re-popped to users after this time expires.
+
+			//Setting this to 
 			RepeatDeliveredContenterAfterInMinutes = 1;
 
 		}
@@ -143,7 +145,7 @@ namespace iBeaconTestApp.Models
 		{
 
 			BeaconContent[] regions;
-
+			bool show = false;
 			regions = _testData.GetBeaconContent ();
 
 			var r = (from h in regions
@@ -157,7 +159,13 @@ namespace iBeaconTestApp.Models
 				r.Accuracy = beacon.Accuracy;
 			}
 
-			return (r != null) ? r as BeaconContent : null;
+
+			if (r != null) 
+			{
+				show = ShouldShowContent (r.ContentId);
+			}
+
+			return (show) ? r as BeaconContent : null;
 		}
 
 		/// <summary>

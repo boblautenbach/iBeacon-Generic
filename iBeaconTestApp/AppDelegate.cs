@@ -50,13 +50,11 @@ namespace iBeaconTestApp
 		public override void DidEnterBackground (UIApplication application)
 		{
 			//let the subscribing views know we are changing state
-			NSNotificationCenter.DefaultCenter.PostNotificationName(Globals.NotificationConstants.AppStatus.ToString(),this, new NSDictionary (Globals.NotificationConstants.isInForeground.ToString(), false)); 
 		}
 		// This method is called as part of the transiton from background to active state.
 		public override void WillEnterForeground (UIApplication application)
 		{
 			//let the subscribing views know we are changing state
-			NSNotificationCenter.DefaultCenter.PostNotificationName(Globals.NotificationConstants.AppStatus.ToString(),this, new NSDictionary (Globals.NotificationConstants.isInForeground.ToString(), true)); 
 		}
 
 		// This method is called when the application is about to terminate. Save data, if needed.
