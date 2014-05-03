@@ -10,6 +10,10 @@ namespace iBeaconTestApp.Models
 
 		void LoadTestData ()
 		{
+
+			//Dummy data that would be part of a CMS system
+			//The Scheduled Time can be a string ("0:0:0") or a time field (like SQl server.
+			//I would normally return JSON and convert to my local objects.
 			regions = new BeaconContent[2] 
 			{
 				new BeaconContent() {ContentId = "1", ScheduledTime = new TimeSpan(0,0,0), Region = "My Beacon", NotificationTitle = "Fashion Place!",
